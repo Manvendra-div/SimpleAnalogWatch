@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <title></title>
+    <link rel="stylesheet" href="/sass/index.css" />
+  </head>
+  <body>
+    <div class="numbers">
+      <div class="row0"><span>12</span></div>
+      <div class="row1"><span>11</span><span>1</span></div>
+      <div class="row2"><span>10</span><span>2</span></div>
+      <div class="row3"><span>9</span><span>3</span></div>
+      <div class="row4"><span>8</span><span>4</span></div>
+      <div class="row5"><span>7</span><span>5</span></div>
+      <div class="row6"><span>6</span></div>
+    </div>
+    <div class="clock">
+      <div class="hand hour-hand" id="hourHand"></div>
+      <div class="hand minute-hand" id="minuteHand"></div>
+      <div class="hand second-hand" id="secondHand"></div>
+      <div class="center-circle"></div>
+    </div>
+    <script>
+      function updateClock() {
+        const hourHand = document.getElementById("hourHand");
+        const minuteHand = document.getElementById("minuteHand");
+        const secondHand = document.getElementById("secondHand");
+
+        const now = new Date();
+        const hours = now.getHours() % 12;
+        const minutes = now.getMinutes();
+        const seconds = now.getSeconds();
+
+        const hourDeg = (hours + minutes / 60) * 30; // 360 degrees / 12 hours = 30 degrees per hour
+        console.log("hourdeg", hourDeg);
+        const minuteDeg = (minutes + seconds / 60) * 6; // 360 degrees / 60 minutes = 6 degrees per minute
+        console.log("minutedeg", minuteDeg);
+        const secondDeg = seconds * 6; // 360 degrees / 60 seconds = 6 degrees per second
+        console.log("seconddeg", secondDeg);
+
+        hourHand.style.transform = `rotate(${hourDeg}deg)`;
+        minuteHand.style.transform = `rotate(${minuteDeg}deg)`;
+        secondHand.style.transform = `rotate(${secondDeg}deg)`;
+      }
+      setInterval(updateClock, 1000);
+    </script>
+  </body>
+</html>
