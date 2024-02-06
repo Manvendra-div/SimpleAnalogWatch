@@ -62,12 +62,16 @@ body {
   padding-right: 1px;
 }
 
+.relative {
+  position: relative;
+}
+
 .clock {
-  position: fixed;
+  position: absolute;
   width: 200px;
   height: 200px;
-  border: 6px solid #333;
   border-radius: 50%;
+  background-image: ur("http://127.0.0.1:5500/sass/clockbg.jpg");
 }
 .clock .hand {
   position: absolute;
